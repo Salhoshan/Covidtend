@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
-  // Webscrape web = new Webscrape();
-  // String infectionsToday = web.scrapeInfectionsToday();
-  // String infectionsYesterday = web.scrapeInfectionsYesterday();
-  //Webscrape web = new Webscrape();
-  //web.scrapeInfectionsToday();
-
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+      return getErrorWidget(context, errorDetails);
+    };
     return MaterialApp(
       home: HomeScreen(),
     );
+  }
+
+  Widget getErrorWidget(BuildContext context, FlutterErrorDetails error) {
+    return Center(child: CircularProgressIndicator());
   }
 }

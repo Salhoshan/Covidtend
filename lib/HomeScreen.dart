@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
 
+import 'Symptoms.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -167,12 +169,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           calculatePercentage(
                                   infectedToday, infectedYesterday) +
-                              "%",
+                              "% " +
+                              isPositiveString(calculatePercentage(
+                                  deathsToday, deathsYesterday)),
                           style: TextStyle(
                               color: isPositive(calculatePercentage(
                                   infectedToday, infectedYesterday)),
                               fontFamily: 'Open Sans',
-                              fontSize: 15,
+                              fontSize: 12,
                               fontWeight: FontWeight.w400),
                         ),
                         //Text(popNum)
@@ -218,12 +222,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         : CircularProgressIndicator(),
                     Text(
-                      calculatePercentage(deathsToday, deathsYesterday) + "%",
+                      calculatePercentage(deathsToday, deathsYesterday) +
+                          "% " +
+                          isPositiveString(calculatePercentage(
+                              deathsToday, deathsYesterday)),
                       style: TextStyle(
                           color: isPositive(calculatePercentage(
                               deathsToday, deathsYesterday)),
                           fontFamily: 'Open Sans',
-                          fontSize: 15,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                   ]),
@@ -292,128 +299,161 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    height: 80,
-                    width: 385,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF2F6FB),
-                        border: Border.all(
-                          color: Colors.black26,
+                  new Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Color(0xffF2F6FB),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Symptoms()));
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 385,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF2F6FB).withOpacity(0.80),
+                            border: Border.all(
+                              color: Colors.black26,
+                            ),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Symptoms',
+                                style: TextStyle(
+                                    color: Color(0xff000000),
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 150,
+                              ),
+                              Image.asset('images/Lungs.png')
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 40, right: 21),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Symptoms',
-                            style: TextStyle(
-                                color: Color(0xff000000),
-                                fontFamily: 'Open Sans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 150,
-                          ),
-                          Image.asset('images/Lungs.png')
-                        ],
                       ),
                     ),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                   Container(
-                    height: 80,
-                    width: 385,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF2F6FB),
-                        border: Border.all(
-                          color: Colors.black26,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Color(0xffF2F6FB),
+                      onTap: () {},
+                      child: Container(
+                        height: 80,
+                        width: 385,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF2F6FB).withOpacity(0.80),
+                            border: Border.all(
+                              color: Colors.black26,
+                            ),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Do's and Don'ts",
+                                style: TextStyle(
+                                    color: Color(0xff000000),
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 110,
+                              ),
+                              Image.asset('images/Mask.png')
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 40, right: 21),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Do's and Don'ts",
-                            style: TextStyle(
-                                color: Color(0xff000000),
-                                fontFamily: 'Open Sans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 110,
-                          ),
-                          Image.asset('images/Mask.png')
-                        ],
                       ),
                     ),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  Container(
-                    height: 80,
-                    width: 385,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF2F6FB),
-                        border: Border.all(
-                          color: Colors.black26,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Color(0xffF2F6FB),
+                      onTap: () {},
+                      child: Container(
+                        height: 80,
+                        width: 385,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF2F6FB).withOpacity(0.80),
+                            border: Border.all(
+                              color: Colors.black26,
+                            ),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Locate Closest Hospital',
+                                style: TextStyle(
+                                    color: Color(0xff000000),
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 45,
+                              ),
+                              Image.asset('images/Hospital.png')
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 40, right: 21),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Locate Closest Hospital',
-                            style: TextStyle(
-                                color: Color(0xff000000),
-                                fontFamily: 'Open Sans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 45,
-                          ),
-                          Image.asset('images/Hospital.png')
-                        ],
                       ),
                     ),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                   Container(
-                    height: 80,
-                    width: 385,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF05C5C).withOpacity(0.81),
-                        border: Border.all(
-                          color: Colors.black26,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Color(0xffF2F6FB),
+                      onTap: () {},
+                      child: Container(
+                        height: 80,
+                        width: 385,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C).withOpacity(0.81),
+                            border: Border.all(
+                              color: Colors.black26,
+                            ),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Call Hotline',
+                                style: TextStyle(
+                                    color: Color(0xff000000),
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 150,
+                              ),
+                              Image.asset('images/Cell Phone.png')
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 40, right: 21),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Call Hotline',
-                            style: TextStyle(
-                                color: Color(0xff000000),
-                                fontFamily: 'Open Sans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 150,
-                          ),
-                          Image.asset('images/Cell Phone.png')
-                        ],
                       ),
                     ),
                   ),
@@ -433,7 +473,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   calculatePercentage(var today, var yesterday) {
-    double percent = double.parse(today) - double.parse(yesterday);
+    double percent;
+    percent = double.parse(today) - double.parse(yesterday);
     percent = (percent / double.parse(yesterday)) * 100;
     return percent.toStringAsFixed(2);
   }
@@ -443,6 +484,14 @@ class _HomeScreenState extends State<HomeScreen> {
       return Color(0xffD43A3A);
     } else {
       return Color(0xff26A86A);
+    }
+  }
+
+  String isPositiveString(String string) {
+    if (double.parse(string) > 0) {
+      return "Increase";
+    } else {
+      return "Decrease";
     }
   }
 }
