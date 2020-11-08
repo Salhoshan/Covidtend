@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Symptoms extends StatelessWidget {
+class DandD extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,7 +8,7 @@ class Symptoms extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Color(0xffF2F2F2),
         centerTitle: true,
-        title: Text('Symptoms',
+        title: Text("Do's and Don'ts",
             style: TextStyle(
                 color: Colors.black,
                 fontFamily: 'Open Sans',
@@ -35,10 +34,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Fever.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xff72BCAF),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Male Patient.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -47,15 +57,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Fever',
+                        'Wear a Mask',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xff72BCAF),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Higher tempreture than usual.\nAround 37 degrees Celsius',
+                        'Protect yourself by covering\nyour mouth and nose',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -87,10 +97,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Coughing.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Facepalm.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -99,15 +120,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Dry Cough',
+                        'Avoid touching your face',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xffF05C5C),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'A dry cough is one that is not\nassociated with a phlegm in the throat. ',
+                        'Protect yourself by covering\nyour mouth and nose',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -139,10 +160,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Slouch.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xff72BCAF),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Hand Wash.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -151,15 +183,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Fatigue',
+                        'Wash hands frequently',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xff72BCAF),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Lose of motivation and energy ',
+                        'Wash hands often with soap\nand water for at least 20 seconds',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -191,10 +223,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Smell.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/No Contact.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -203,15 +246,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Loss of taste or smell',
+                        'Avoid close contact',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xffF05C5C),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'A frequent symptom of COVID-19 ',
+                        'Avoid close contact with others that\nare sick or have symptoms',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -243,10 +286,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Flu.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xff72BCAF),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/No Crowd.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -255,15 +309,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Nasal Congestion',
+                        'Avoid Crowded Places',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xff72BCAF),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Congestion is when your nose\nbecomes stuffed up and inflamed ',
+                        'Steer clear of crowded places to\nprevent illness spread',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -295,10 +349,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Redeye.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/No Flight.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -307,15 +372,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Conjunctivitis (Red Eyes)',
+                        'Avoid traveling',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xffF05C5C),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'An inflammation or infection of\nthe transparent membrane on your eyelid ',
+                        'Avoid traveling unless you have\nan urgent event',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -347,10 +412,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/SoreThroat.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xff72BCAF),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Hand Sanitizer.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -359,15 +435,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Sore throat',
+                        'Carry a hand sanitizer',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xff72BCAF),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Painful, dry, or\nscratchy feeling in the throat',
+                        'Use it to disinfect your hands\nafter touching random surfaces',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -399,10 +475,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Headache.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Temperature.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -411,15 +498,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Headache',
+                        "Don't ignore symptoms",
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xffF05C5C),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Pain arising from\nthe head or upper neck',
+                        'Be sure to contact the COVID-19 hotline\nwhen feeling symptoms to prevent\nthe virus from spreading',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -451,10 +538,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Elbowpain.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xff72BCAF),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Stay at Home.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -463,15 +561,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Muscle or joint pain',
+                        'Stay at home',
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xff72BCAF),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Pain or inflammation arising\nfrom any part of a joint or muscle',
+                        'Avoid contact with people as much\nas possible and remain indoors',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',
@@ -503,10 +601,21 @@ class Symptoms extends StatelessWidget {
               padding: const EdgeInsets.only(left: 11),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/Oxygen.png',
-                    height: 67,
-                    width: 58,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF05C5C),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Image.asset(
+                        'images/Medicine.png',
+                        height: 59,
+                        width: 60,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 13,
@@ -515,15 +624,15 @@ class Symptoms extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Shortness of breath',
+                        "Don't take medications",
                         style: TextStyle(
-                            color: Color(0xffFF6464),
+                            color: Color(0xffF05C5C),
                             fontFamily: 'Open Sans',
                             fontSize: 18,
                             fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        'Intense tightening in the chest\nor a feeling of suffocation',
+                        "Don't Take any medications for\nCOVID-19 unless it is approved for\nby the FDC, WHO, or CDC",
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontFamily: 'Open Sans',

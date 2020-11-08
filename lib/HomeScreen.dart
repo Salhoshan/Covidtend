@@ -1,9 +1,11 @@
+import 'package:covidtend/DandD.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
-
+import 'package:url_launcher/url_launcher.dart';
 import 'Symptoms.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -64,6 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
       backgroundColor: Color(0xffE3E1E1),
       appBar: AppBar(
@@ -130,67 +134,65 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Container(
-                  height: 120,
-                  width: 110,
-                  decoration: BoxDecoration(
-                      color: Color(0xffF2F6FB),
-                      border: Border.all(
-                        color: Colors.black26,
-                      ),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 14),
-                    child: Column(
-                      children: [
-                        Opacity(
-                          opacity: 0.46,
-                          child: Text(
-                            'Cases',
-                            style: TextStyle(
-                                color: Color(0xff000000),
-                                fontFamily: 'Open Sans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.normal),
-                          ),
-                        ),
-                        (loaded)
-                            ? Text(
-                                infectedToday,
-                                style: TextStyle(
-                                    color: Color(0xff000000),
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w400),
-                              )
-                            : CircularProgressIndicator(),
-                        Text(
-                          calculatePercentage(
-                                  infectedToday, infectedYesterday) +
-                              "% " +
-                              isPositiveString(calculatePercentage(
-                                  deathsToday, deathsYesterday)),
-                          style: TextStyle(
-                              color: isPositive(calculatePercentage(
-                                  infectedToday, infectedYesterday)),
-                              fontFamily: 'Open Sans',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400),
-                        ),
-                        //Text(popNum)
-                      ],
+              SizedBox(
+                width: media.width * 0.015,
+              ),
+              Container(
+                height: media.height * 0.19,
+                width: media.width * 0.31,
+                decoration: BoxDecoration(
+                    color: Color(0xffF2F6FB),
+                    border: Border.all(
+                      color: Colors.black26,
                     ),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: Column(
+                    children: [
+                      Opacity(
+                        opacity: 0.46,
+                        child: Text(
+                          'Cases',
+                          style: TextStyle(
+                              color: Color(0xff000000),
+                              fontFamily: 'Open Sans',
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      (loaded)
+                          ? Text(
+                              infectedToday,
+                              style: TextStyle(
+                                  color: Color(0xff000000),
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          : CircularProgressIndicator(),
+                      Text(
+                        calculatePercentage(infectedToday, infectedYesterday) +
+                            "% " +
+                            isPositiveString(calculatePercentage(
+                                infectedToday, infectedYesterday)),
+                        style: TextStyle(
+                            color: isPositive(calculatePercentage(
+                                infectedToday, infectedYesterday)),
+                            fontFamily: 'Open Sans',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
                   ),
                 ),
               ),
               SizedBox(
-                width: 25,
+                width: media.width * 0.02,
               ),
               Container(
-                height: 120,
-                width: 110,
+                height: media.height * 0.19,
+                width: media.width * 0.31,
                 decoration: BoxDecoration(
                     color: Color(0xffF2F6FB),
                     border: Border.all(
@@ -237,11 +239,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                width: 25,
+                width: media.width * 0.02,
               ),
               Container(
-                height: 120,
-                width: 110,
+                height: media.height * 0.19,
+                width: media.width * 0.31,
                 decoration: BoxDecoration(
                     color: Color(0xffF2F6FB),
                     border: Border.all(
@@ -277,6 +279,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         : CircularProgressIndicator(),
                   ]),
                 ),
+              ),
+              SizedBox(
+                width: media.width * 0.015,
               )
             ],
           ),
@@ -284,8 +289,8 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 28,
           ),
           Container(
-            height: 377,
-            width: 408,
+            height: media.height * 0.519,
+            width: media.width,
             decoration: BoxDecoration(
                 color: Color(0xff000000).withOpacity(0.15),
                 border: Border.all(
@@ -297,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: media.height * 0.02,
                   ),
                   new Material(
                     color: Colors.transparent,
@@ -310,8 +315,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) => Symptoms()));
                       },
                       child: Container(
-                        height: 80,
-                        width: 385,
+                        height: media.height * 0.114,
+                        width: media.width,
                         decoration: BoxDecoration(
                             color: Color(0xffF2F6FB).withOpacity(0.80),
                             border: Border.all(
@@ -319,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             borderRadius: BorderRadius.circular(30)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          padding: const EdgeInsets.only(left: 40, right: 18),
                           child: Row(
                             children: [
                               Text(
@@ -331,9 +336,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                width: 150,
+                                width: media.width * 0.35,
                               ),
-                              Image.asset('images/Lungs.png')
+                              Image.asset(
+                                'images/LungInfected.png',
+                                height: 50,
+                                width: 50,
+                              )
                             ],
                           ),
                         ),
@@ -347,10 +356,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.transparent,
                     child: InkWell(
                       splashColor: Color(0xffF2F6FB),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => DandD()));
+                      },
                       child: Container(
-                        height: 80,
-                        width: 385,
+                        height: media.height * 0.114,
+                        width: media.width,
                         decoration: BoxDecoration(
                             color: Color(0xffF2F6FB).withOpacity(0.80),
                             border: Border.all(
@@ -358,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             borderRadius: BorderRadius.circular(30)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          padding: const EdgeInsets.only(left: 40, right: 18),
                           child: Row(
                             children: [
                               Text(
@@ -370,9 +382,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                width: 110,
+                                width: media.width * 0.23,
                               ),
-                              Image.asset('images/Mask.png')
+                              Image.asset(
+                                'images/Patient.png',
+                                height: 50,
+                                width: 50,
+                              )
                             ],
                           ),
                         ),
@@ -388,8 +404,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       splashColor: Color(0xffF2F6FB),
                       onTap: () {},
                       child: Container(
-                        height: 80,
-                        width: 385,
+                        height: media.height * 0.114,
+                        width: media.width,
                         decoration: BoxDecoration(
                             color: Color(0xffF2F6FB).withOpacity(0.80),
                             border: Border.all(
@@ -397,11 +413,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             borderRadius: BorderRadius.circular(30)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          padding: const EdgeInsets.only(left: 40, right: 18),
                           child: Row(
                             children: [
                               Text(
-                                'Locate Closest Hospital',
+                                'Locate Hospital',
                                 style: TextStyle(
                                     color: Color(0xff000000),
                                     fontFamily: 'Open Sans',
@@ -409,9 +425,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                width: 45,
+                                width: media.width * 0.24,
                               ),
-                              Image.asset('images/Hospital.png')
+                              Image.asset(
+                                'images/Hospital.png',
+                                height: 50,
+                                width: 50,
+                              )
                             ],
                           ),
                         ),
@@ -425,10 +445,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.transparent,
                     child: InkWell(
                       splashColor: Color(0xffF2F6FB),
-                      onTap: () {},
+                      onTap: () {
+                        launch("tel://937");
+                      },
                       child: Container(
-                        height: 80,
-                        width: 385,
+                        height: media.height * 0.114,
+                        width: media.width,
                         decoration: BoxDecoration(
                             color: Color(0xffF05C5C).withOpacity(0.81),
                             border: Border.all(
@@ -436,7 +458,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             borderRadius: BorderRadius.circular(30)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 40, right: 21),
+                          padding: const EdgeInsets.only(left: 40, right: 15),
                           child: Row(
                             children: [
                               Text(
@@ -448,9 +470,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                width: 150,
+                                width: media.width * 0.32,
                               ),
-                              Image.asset('images/Cell Phone.png')
+                              Image.asset(
+                                'images/Phone.png',
+                                height: 50,
+                                width: 50,
+                              )
                             ],
                           ),
                         ),
